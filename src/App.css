@@ -1,0 +1,250 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+* {
+  box-sizing: border-box;
+}
+
+/* GLOBAL STYLES */
+
+body,
+.App {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 16px;
+  background: url(https://i.pinimg.com/564x/06/8d/39/068d3907847a62e254fdf6e78376e495.jpg);
+}
+
+button {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  color: #695FCF;
+}
+button:hover {
+  opacity: 0.7;
+}
+
+.App {
+  display: flex;
+}
+
+/* SIDEBAR STYLES */
+
+.app-sidebar {
+  width: 30%;
+  height: 100vh;
+}
+
+.app-sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  color: #ffff;
+  column-gap: 20px;
+}
+.app-sidebar-header h1 {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.app-sidebar-notes {
+  height: calc(100vh - 78px);
+  overflow-y: auto;
+  padding-right: 3px;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #695FCF; /* Цвет ползунка */
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255); /* Цвет трека */
+  border-radius: 8px;
+}
+::-webkit-scrollbar-corner {
+  background: rgb(255, 248, 248); /* Цвет угловых блоков (если они отображаются) */
+}
+.app-sidebar-note {
+  padding: 25px;
+  cursor: pointer;
+  color: #fff;
+  border: 3px solid rgba(0, 0, 0, 0.765);
+}
+/*Delete button */
+.deleteButton:hover {
+  color: #fff;
+}
+.sidebar-note-title {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+#title {
+  background-color: rgba(103, 103, 103, 0.322);
+  color: #fff;
+}
+#body {
+  background-color: rgba(103, 103, 103, 0.322);
+  color: #fff;
+}
+.app-sidebar-note button {
+  color: crimson;
+}
+.app-sidebar-note p {
+  margin: 10px 0;
+}
+.app-sidebar-note small {
+  display: block;
+  color: #999;
+}
+
+.app-sidebar-note:hover {
+  background: rgba(84, 84, 84, 0.429);
+  color: #fff;
+}
+.app-sidebar-note.active,
+.app-sidebar-note.active small {
+  background: #695FCF;
+  color: white;
+}
+
+/* NOTE EDITOR/PREVIEW (MAIN) STYLES */
+
+.app-main {
+  width: 100%;
+  height: 100vh;
+}
+.app-main-note-edit,
+.app-main-note-preview {
+  height: 50vh;
+  color: #fff;
+}
+
+.no-active-note {
+  width: 100%;
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+  font-size: 2rem;
+  color: #999;
+}
+
+/* Editing */
+.app-main-note-edit {
+  padding: 25px;
+}
+
+.app-main-note-edit input,
+textarea {
+  display: block;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  width: 100%;
+  height: calc(50vh - 130px);
+  padding: 10px;
+  resize: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+.app-main-note-edit input {
+  height: 50px;
+  font-size: 2rem;
+}
+
+/* Preview */
+.app-main-note-preview {
+  border-top: 5px solid #ffffff9d;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.preview-title {
+  padding: 25px 25px 0 25px;
+  margin: 0;
+}
+
+.markdown-preview {
+  padding: 0 25px 25px 25px;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.burger {
+  width: 35px;
+  height: 35px;
+  display: none;
+}
+.burger:hover {
+  cursor: pointer;
+}
+.addButton {
+  display: flex;
+  justify-content: right;
+  color: #fff;
+  padding: 10px;
+}
+.addButton:hover {
+  opacity: 0.7;
+}
+.noNotesClass {
+  color: #fff;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+@media(max-width:900px) {
+  .burger {
+    display: block; /* я його бачу  */
+  }
+  /* .app-main {
+    display: flex;
+  } */
+  .app-sidebar-notes {
+    position: fixed;
+    top: 60px; 
+    left: 0;
+    transform: translateX(-100%);
+    transition: all .3s ease;
+    background: black;
+    z-index: 6;
+    height: 100%;
+    width: 100%;
+  }
+  .app-sidebar-notes.notes-active {
+    transform: translateX(0);
+  }
+  .app-sidebar-header {
+    position: fixed; /* фіксована на всій сторінці  */
+    top: 0; /* поинається зліва та справа */
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    background-color: #5f75cf;
+    padding: 10px;
+  }
+  .app-sidebar {
+    width: fit-content;
+  }
+  .addButton {
+    display: flex;
+    justify-content: right; 
+    color: #fff;
+  }
+  .addButton:hover {
+    opacity: 0.7;
+  }
+  body {
+    padding-top: 57px;
+  }
+
+}
